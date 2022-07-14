@@ -1,0 +1,25 @@
+{% extends 'admin.html' %}
+{% block title %}
+{% if baby %}
+  {{ baby.name }}
+{% else %}
+    Add baby
+{% endif %}
+{% endblock %}
+
+{% block main %}
+    {% if baby %}
+        <a href="{% url 'baby_delete' baby.pk %}" onClick="return confirm('Delete?')">
+            <div class="right">
+              <span class="close">
+                &times;
+              </span>
+            </div>
+        </a>
+    {% endif %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+      <input type="submit" value="Submit">
+  </form>
+{% endblock %}

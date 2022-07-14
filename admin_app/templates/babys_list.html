@@ -1,0 +1,28 @@
+{% extends 'admin.html' %}
+{% block title %}
+    Babys
+{% endblock %}
+
+{% block main %}
+    <h3>Client's babys: <a href="new_baby" class="right">Add baby</a></h3>
+    {% for item in babys %}
+    <label for="baby_{{ item.id }}">
+        {% if item.bith %}
+            {{ item.bith|upper }}
+            <span class="right">{{ item.age }}</span>
+        {% endif %}
+    </label>
+
+<br>
+    <div class="info" id="baby_{{ item.id }}">
+      <p>
+          <a href="{{ item.get_url }}">
+              {% if item.name %}{{ item.name|upper }}{% endif %}
+          </a>
+      </p>
+
+    </div>
+    {% endfor %}
+    {% include 'include/pagination.html' %}
+{% endblock %}
+

@@ -1,0 +1,30 @@
+{% extends 'admin.html' %}
+
+{% block title %}
+    Calendar
+{% endblock %}
+
+{% block main %}
+    <h3>Calendar:</h3>
+<!--    <h3>{{ month }} {{ year }}</h3>-->
+    <label for="calendar">
+        <a href="{% url 'calendar' %}{{ prew_year }}/{{ prew_month }}">Prew</a>
+        <a href="{% url 'calendar' %}{{ next_year }}/{{ next_month }}" class="right">Next</a>
+    </label>
+    <div id="calendar">
+        {{ calend|safe }}
+    </div>
+
+<!--    <div id="orders_info" style="display: none">-->
+<!--    </div>-->
+    <script type="text/javascript">
+        function Show_data(d) {
+            alert(d)
+            document.getElementById("orders_info").innerHTML = document.getElementById("info_" + d).innerHTML;
+            document.getElementById("orders_info").style.display = 'block';
+        }
+    </script>
+    {% include 'include/modal_window.html' %}
+
+{% endblock %}
+

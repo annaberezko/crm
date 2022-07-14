@@ -1,0 +1,27 @@
+{% extends 'admin.html' %}
+{% block title %}
+{% if order %}
+    {{ order.service.name }} | {{ order.date }}
+{% else %}
+    New order
+{% endif %}
+
+{% endblock %}
+
+{% block main %}
+    {% if order %}
+        <a href="{% url 'order_delete' order.pk %}" onClick="return confirm('Delete?')">
+            <div class="right">
+              <span class="close">
+                &times;
+              </span>
+            </div>
+        </a>
+    {% endif %}
+  <form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+      <input type="submit" value="Submit">
+  </form>
+{% endblock %}

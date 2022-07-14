@@ -1,0 +1,38 @@
+{% extends 'admin.html' %}
+{% block title %}
+    Orders
+{% endblock %}
+
+{% block main %}
+
+    <h3>My orders: <a href="new_order" class="right">Create order</a></h3>
+        {% for item in orders %}
+        <div style="position: relative">
+            <label for="order_{{ item.id }}">{{ item.date }}</label>
+            <div class="status right {{ item.status.name|lower }}">{{ item.status.name }}</div>
+            <br>
+            <div class="info" id="order_{{ item.id }}">
+              <p>
+                  <a href="{{ item.get_url }}">
+                      {{ item.service.name|upper }}
+                  </a>
+              </p>
+              <p>
+                  {{ item.client }}
+              </p>
+              {% if item.price %}
+                <p>
+                    {{ item.price }} UAH
+                </p>
+              {% endif %}
+              {% if item.info %}
+                <p>
+                    {{ item.info }}
+                </p>
+              {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    {% include 'include/pagination.html' %}
+{% endblock %}
+

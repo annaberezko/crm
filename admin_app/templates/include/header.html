@@ -1,0 +1,25 @@
+{% load base_extras %}
+{% url 'logout' as logout %}
+{% url 'user_info' as user_info %}
+{% url 'calendar' as calendar %}
+{% url 'orders' as orders %}
+{% url 'clients' as clients %}
+{% url 'babys' as babys %}
+{% url 'statistic' as statistic %}
+
+<div id="header">
+  <div class="menu">
+    <ul>
+      <li><a class="{% active request calendar %}" href="{{ calendar }}">Calendar</a></li>
+      <li><a class="{% active request orders %}" href="{{ orders }}">Orders</a></li>
+      <li><a class="{% active request clients %}" href="{{ clients }}">Clients</a></li>
+      <li><a class="{% active request babys %}" href="{{ babys }}">Babys</a></li>
+      <li><a class="{% active request statistic %}" href="{{ statistic }}">Statistic</a></li>
+    </ul>
+  </div>
+  <div class="user">
+    {% if request.user.is_authenticated %}Hello,
+    <a class="{% active request user_info %}" href="{{ user_info }}">{{ request.user.username }}</a> |
+    <a href="{{ logout }}">logout</a>{% endif %}
+  </div>
+</div>

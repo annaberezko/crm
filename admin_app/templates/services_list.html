@@ -1,0 +1,24 @@
+{% extends 'admin.html' %}
+{% block title %}
+    Services
+{% endblock %}
+
+{% block main %}
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Submit">
+</form>
+<!--  <table>-->
+<!--    <tr>-->
+<!--      <th width="10px">№</th>-->
+<!--      <th>Name</th>-->
+<!--    </tr>-->
+<!--    {% for item in services %}-->
+<!--    <tr>-->
+<!--      <td width="10px">{{ item.id }}</td>-->
+<!--      <td><a href="{{ item.get_url }}">{{ item.name }}</a></td>-->
+<!--    </tr>-->
+<!--    {% endfor %}-->
+<!--  </table>-->
+{% endblock %}

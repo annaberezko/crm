@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Authorisation
+{% endblock %}
+
+{% block content %}
+<div id="login-form">
+  <form method="post">
+  <h2>{{ 'Account Login' }}</h2>
+    {% csrf_token %}
+<!--    <input type="text" id="username" name="username" placeholder="Username" required>-->
+<!--    <input type="email" id="email" name="email" placeholder="Email Address" required>-->
+    {{ form.as_p }}
+     <input type="submit" value="Login">
+  </form>
+  </form>
+  <!--<div id="create-account-wrap">
+    <p>Not a member? <a href="#">Create Account</a><p>
+  </div>create-account-wrap-->
+</div><!--login-form-wrap-->
+
+{% endblock %}

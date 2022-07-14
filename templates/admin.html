@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+{% include 'include/header.html' %}
+<div id="main">
+    <div id="main_block">
+        {% block main %}{% endblock %}
+    </div>
+
+</div>
+{% endblock %}
